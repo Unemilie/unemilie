@@ -1,4 +1,4 @@
-/* STYLE.CSS – Styles du portfolio */
+/* STYLE.CSS – Styles du portfolio avec onglets */
 
 body {
     margin: 0;
@@ -12,11 +12,40 @@ header {
     padding: 20px;
 }
 
-.slider-container {
-    position: relative;
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.tab-button {
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 0 5px;
+    border-radius: 5px;
+}
+
+.tab-button.active {
+    background: #555;
+}
+
+.tab-content {
+    display: none;
+    margin: 20px auto;
     width: 80%;
     max-width: 900px;
-    margin: 40px auto;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.slider-container {
+    position: relative;
+    width: 100%;
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
