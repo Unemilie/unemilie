@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio - Galerie</title>
+    <title>Portfolio - Onglets</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -12,17 +12,55 @@
         <p>Galerie d'œuvres graphiques</p>
     </header>
 
-    <section class="slider-container">
-        <div class="slider" id="slider">
-            <!-- Exemple d'images — à remplacer par tes propres fichiers -->
-            <img src="images/exemple1.jpg" alt="Oeuvre 1" />
-            <img src="images/exemple2.jpg" alt="Oeuvre 2" />
-            <img src="images/exemple3.jpg" alt="Oeuvre 3" />
+    <nav class="tabs">
+        <button class="tab-button active" data-tab="tab1">Me concernant</button>
+        <button class="tab-button" data-tab="tab2">Pro</button>
+        <button class="tab-button" data-tab="tab3">Perso</button>
+    </nav>
+
+    <section class="tab-content active" id="tab1">
+        <p>Bienvenue sur mon portfolio ! Ici, vous trouverez une description de mon travail et mes projets graphiques récents.</p>
+    </section>
+
+    <section class="tab-content" id="tab2">
+        <div class="slider-container">
+            <div class="slider" id="slider1">
+                <img src="images/exemple1.jpg" alt="Oeuvre 1" />
+                <img src="images/exemple2.jpg" alt="Oeuvre 2" />
+                <img src="images/exemple3.jpg" alt="Oeuvre 3" />
+            </div>
+            <button class="nav prev" data-slider="slider1">&#10094;</button>
+            <button class="nav next" data-slider="slider1">&#10095;</button>
         </div>
-        <button class="nav prev" id="prevBtn">&#10094;</button>
-        <button class="nav next" id="nextBtn">&#10095;</button>
+    </section>
+
+    <section class="tab-content" id="tab3">
+        <div class="slider-container">
+            <div class="slider" id="slider2">
+                <img src="images/exemple4.jpg" alt="Oeuvre 4" />
+                <img src="images/exemple5.jpg" alt="Oeuvre 5" />
+                <img src="images/exemple6.jpg" alt="Oeuvre 6" />
+            </div>
+            <button class="nav prev" data-slider="slider2">&#10094;</button>
+            <button class="nav next" data-slider="slider2">&#10095;</button>
+        </div>
     </section>
 
     <script src="script.js"></script>
+    <script>
+        // Gestion des onglets
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabButtons.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.tab).classList.add('active');
+            });
+        });
+    </script>
 </body>
 </html>
